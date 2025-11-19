@@ -143,3 +143,34 @@ th, td {
   font-size: 0.8rem;
   color: #9ca3af;
 }
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #1f2937;
+}
+
+.tab-button {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.tab-button.active {
+  color: #e5e7eb;
+  border-bottom-color: #3b82f6;
+  font-weight: 600;
+}
+
+.panel {
+  display: none;
+}
+
+.panel-active {
+  display: block;
+}

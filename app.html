@@ -15,76 +15,117 @@
   <div class="container">
     <h1>Panel de Productos - LookMyStyle</h1>
 
-    <section class="card">
-      <h2>Filtrar productos</h2>
-      <div class="form-inline">
-        <input type="text" id="filterCategoria" placeholder="Categoría (ej: Camisas)" />
-        <input type="number" id="filterMinPrice" placeholder="Precio mín." min="0" step="0.01" />
-        <input type="number" id="filterMaxPrice" placeholder="Precio máx." min="0" step="0.01" />
-        <button id="searchBtn" class="btn btn-primary">Filtrar</button>
-        <button id="clearSearchBtn" class="btn btn-secondary">Limpiar</button>
-      </div>
-    </section>
+    <div class="tabs">
+      <button class="tab-button active" data-target="panel-productos">
+        Gestión de productos
+      </button>
+      <button class="tab-button" data-target="panel-dashboard">
+        Dashboard
+      </button>
+    </div>
 
-    <section class="card">
-      <h2 id="formTitle">Crear producto</h2>
-      <form id="productoForm">
-        <input type="hidden" name="id" id="productoId" />
-
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" name="nombre" id="nombre" required />
+    <div class="panel panel-active" id="panel-productos">
+      <section class="card">
+        <h2>Filtrar productos</h2>
+        <div class="form-inline">
+          <input
+            type="text"
+            id="filterCategoria"
+            placeholder="Categoría (ej: Camisas)"
+          />
+          <input
+            type="number"
+            id="filterMinPrice"
+            placeholder="Precio mín."
+            min="0"
+            step="0.01"
+          />
+          <input
+            type="number"
+            id="filterMaxPrice"
+            placeholder="Precio máx."
+            min="0"
+            step="0.01"
+          />
+          <button id="searchBtn" class="btn btn-primary">Filtrar</button>
+          <button id="clearSearchBtn" class="btn btn-secondary">Limpiar</button>
         </div>
+      </section>
 
-        <div class="form-group">
-          <label for="categoria">Categoría</label>
-          <input type="text" name="categoria" id="categoria" />
-        </div>
+      <section class="card">
+        <h2 id="formTitle">Crear producto</h2>
+        <form id="productoForm">
+          <input type="hidden" name="id" id="productoId" />
 
-        <div class="form-group">
-          <label for="precio">Precio</label>
-          <input type="number" name="precio" id="precio" min="0" step="0.01" required />
-        </div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required />
+          </div>
 
-        <div class="form-group">
-          <label for="stock">Stock</label>
-          <input type="number" name="stock" id="stock" min="0" />
-        </div>
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <input type="text" name="categoria" id="categoria" />
+          </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="button" id="cancelEditBtn" class="btn btn-secondary hidden">Cancelar edición</button>
-      </form>
+          <div class="form-group">
+            <label for="precio">Precio</label>
+            <input
+              type="number"
+              name="precio"
+              id="precio"
+              min="0"
+              step="0.01"
+              required
+            />
+          </div>
 
-      <div id="formMessage" class="message"></div>
-    </section>
+          <div class="form-group">
+            <label for="stock">Stock</label>
+            <input type="number" name="stock" id="stock" min="0" />
+          </div>
 
-    <section class="card">
-      <h2>Listado de productos</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="productosTableBody">
-        </tbody>
-      </table>
-      <div id="listMessage" class="message"></div>
-    </section>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button
+            type="button"
+            id="cancelEditBtn"
+            class="btn btn-secondary hidden"
+          >
+            Cancelar edición
+          </button>
+        </form>
 
-    <section class="card">
-      <h2>Dashboard - Productos por categoría</h2>
-      <p class="small">
-        Esta gráfica agrupa los productos por categoría. Es la funcionalidad extra
-        (visualización de datos con Chart.js) que suma al 20% adicional.
-      </p>
-      <canvas id="productosChart" height="130"></canvas>
-    </section>
+        <div id="formMessage" class="message"></div>
+      </section>
+
+      <section class="card">
+        <h2>Listado de productos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="productosTableBody">
+          </tbody>
+        </table>
+        <div id="listMessage" class="message"></div>
+      </section>
+    </div>
+
+    <div class="panel" id="panel-dashboard">
+      <section class="card">
+        <h2>Dashboard - Productos por categoría</h2>
+        <p class="small">
+          Esta gráfica agrupa los productos por categoría.
+        </p>
+        <canvas id="productosChart" height="130"></canvas>
+      </section>
+    </div>
   </div>
 
   <script src="js/api.js"></script>

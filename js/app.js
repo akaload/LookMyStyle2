@@ -2,8 +2,7 @@ let productos = [];
 let productosChart = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   if (!token) {
     window.location.href = "index.html";
     return;
@@ -24,6 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const panels = document.querySelectorAll(".panel");
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.target;
+
+      tabButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      panels.forEach((panel) => {
+        if (panel.id === target) {
+          panel.classList.add("panel-active");
+        } else {
+          panel.classList.remove("panel-active");
+        }
+      });
+    });
+  });
+
   const productoForm = document.getElementById("productoForm");
   const formTitle = document.getElementById("formTitle");
   const cancelEditBtn = document.getElementById("cancelEditBtn");
@@ -38,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadProductos();
 
+  // Filtros
   searchBtn.addEventListener("click", () => {
     const filters = {
       categoria: filterCategoria.value.trim() || undefined,
